@@ -1,5 +1,5 @@
 import { Medicamento } from './medicamento';
-import { SubcategoriaPastilla } from './enums/subpastilla.ts';
+import { SubcategoriaPastilla } from '../domain/enums/subpastilla';
 
 // 'Pastilla' extiende (hereda) de 'Medicamento', por lo que tiene todas sus propiedades.
 export class Pastilla extends Medicamento {
