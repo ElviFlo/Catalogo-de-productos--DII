@@ -33,7 +33,7 @@ const PRODUCTS: Product[] = [
     brand: "MK",
     price: 4000,
     type: "Pastillas",
-    image: "../../assets/products/",
+    image: "../../assets/products/acetaminofen.png",
   },
   {
     id: "2",
@@ -41,7 +41,7 @@ const PRODUCTS: Product[] = [
     brand: "AG",
     price: 5000,
     type: "Pastillas",
-    image: "../../assets/products/",
+    image: "../../assets/products/loratadina",
   },
   {
     id: "3",
@@ -49,7 +49,7 @@ const PRODUCTS: Product[] = [
     brand: "Genfar",
     price: 10000,
     type: "Pastillas",
-    image: "../../assets/products/",
+    image: "../../assets/products/diclofenaco.png",
   },
   {
     id: "4",
@@ -57,7 +57,7 @@ const PRODUCTS: Product[] = [
     brand: "Genfar",
     price: 8000,
     type: "Geles",
-    image: "../../assets/products/",
+    image: "../../assets/products/lavirk.png",
   },
   {
     id: "5",
@@ -65,7 +65,7 @@ const PRODUCTS: Product[] = [
     brand: "Bayer",
     price: 8000,
     type: "Pastillas",
-    image: "../../assets/products/",
+    image: "../../assets/products/alka-seltzer.png",
   },
   {
     id: "6",
@@ -73,7 +73,7 @@ const PRODUCTS: Product[] = [
     brand: "Sanofi",
     price: 11000,
     type: "Pastillas",
-    image: "../../assets/products/",
+    image: "../../assets/products/buscapina.png",
   },
   {
     id: "7",
@@ -81,7 +81,7 @@ const PRODUCTS: Product[] = [
     brand: "Genfar",
     price: 4000,
     type: "Cremas",
-    image: "../../assets/products/",
+    image: "../../assets/products/terbix.png",
   },
   {
     id: "8",
@@ -89,7 +89,7 @@ const PRODUCTS: Product[] = [
     brand: "AG",
     price: 6000,
     type: "Cremas",
-    image: "../../assets/products/",
+    image: "../../assets/products/clotrimazol.png",
   },
   {
     id: "9",
@@ -97,7 +97,7 @@ const PRODUCTS: Product[] = [
     brand: "Pfizer",
     price: 4000,
     type: "Pastillas",
-    image: "../../assets/products/",
+    image: "../../assets/products/advil-max.png",
   },
   {
     id: "10",
@@ -105,7 +105,7 @@ const PRODUCTS: Product[] = [
     brand: "AG",
     price: 10000,
     type: "Pastillas",
-    image: "../../assets/products/",
+    image: "../../assets/products/naproxeno.png",
   },
   {
     id: "11",
@@ -113,7 +113,7 @@ const PRODUCTS: Product[] = [
     brand: "Genfar",
     price: 12000,
     type: "Cremas",
-    image: "../../assets/products/",
+    image: "../../assets/products/aciclovir.png",
   },
   {
     id: "12",
@@ -121,7 +121,7 @@ const PRODUCTS: Product[] = [
     brand: "AG",
     price: 10000,
     type: "Geles",
-    image: "../../assets/products/",
+    image: "../../assets/products/ibupol.png",
   },
 ];
 
