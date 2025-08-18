@@ -41,7 +41,7 @@ const PRODUCTS: Product[] = [
     brand: "AG",
     price: 5000,
     type: "Pastillas",
-    image: "../../assets/products/loratadina",
+    image: "../../assets/products/loratadina.png",
   },
   {
     id: "3",
@@ -97,7 +97,7 @@ const PRODUCTS: Product[] = [
     brand: "Pfizer",
     price: 4000,
     type: "Pastillas",
-    image: "../../assets/products/advil-max.png",
+    image: "../../assets/products/advil.png",
   },
   {
     id: "10",
@@ -117,11 +117,11 @@ const PRODUCTS: Product[] = [
   },
   {
     id: "12",
-    name: "Ibupol",
+    name: "Ibudol",
     brand: "AG",
     price: 10000,
     type: "Geles",
-    image: "../../assets/products/ibupol.png",
+    image: "../../assets/products/ibudol.png",
   },
 ];
 
