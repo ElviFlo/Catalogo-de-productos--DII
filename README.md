@@ -21,6 +21,43 @@ Los patrones de diseño son soluciones recurrentes a problemas habituales de dis
 
 ---
 
+## 🔹 Instalación del Backend (NestJS)
+
+1) Instalar CLI de NestJS (global):
+```bash
+npm i -g @nestjs/cli
+```
+
+- Dependencias principales de NestJS:
+```bash
+npm install @nestjs/common @nestjs/core @nestjs/platform-express reflect-metadata rxjs
+```
+- Dependencias de desarrollo:
+```bash
+npm install -D @nestjs/cli @nestjs/schematics @nestjs/testing typescript ts-node ts-loader
+```
+- Validacion de datos en NestJS:
+```bash
+npm install class-validator class-transformer
+```
+- Manejo de variables de entorno:
+```bash
+npm install @nestjs/config
+```
+---
+
+## 🔹 Instalación del Frontend (Vite + React)
+```bash
+cd frontend
+
+npm install react react-dom typescript tailwindcss @headlessui/react lucide-react
+
+npm install -D vite postcss autoprefixer eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin prettier
+
+```
+---
+
+
 ##  Arquitectura del módulo
 - Capas: Controller (HTTP) → Service (negocio) → Repository (persistencia) → Dominio (entidades).
 - DTOs con `class-validator` para validar entrada/salida.
@@ -85,7 +122,7 @@ Flujo:* `Request → DTO validado → MedicamentoFactory.create(dto, id) → (Cr
 
 ---
 
-###  DTO — CreateMedicamentoDto (contrato/validación) 
+### DTO — CreateMedicamentoDto (contrato/validación) 
 ¿Qué es? Objeto de transferencia que valida y modela la entrada.  
 ¿Por que?: separamos transporte de dominio y validamos campos comunes y específicos de cada tipo.  
 se encuentra en: `backend/src/catalogo/dto/createMedicamento.ts`  
@@ -154,6 +191,7 @@ export abstract class Medicamento {{
 Dónde se encuentra: `backend/src/catalogo/domain/enums/subpastilla.ts`
 
 ---
+
 
 ###  Composite (estructural) 
 ¿Qué es? Permite componer objetos en árboles y tratarlos de forma uniforme (hojas y compuestos).  
@@ -246,4 +284,21 @@ npx prisma generate     # Generar cliente Prisma
 npx prisma db push      # Sincronizar esquema con BD
 npx prisma studio       # Abrir interfaz visual
 npx prisma db seed      # Ejecutar seed
+```
+
+## Orden de comandos npm 
+- Primero en el backend (desde la carpeta backend/):
+```bash
+cd backend
+npm install
+npm run prisma:generate
+npm run prisma:push
+npm run seed
+npm run dev
+```
+- Luego en el frontend (desde la carpeta frontend/):
+```bash
+cd frontend
+npm install
+npm run dev
 ```
