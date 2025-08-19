@@ -44,10 +44,6 @@ backend/src/catalogo/
   infraestructure/           # controller/repository (esqueleto)
 ```
 
----
-
-##  Patrones implementados en el módulo
-
 ###  Factory Method — MedicamentoFactory (creacional) 
 ¿Qué es? Proporciona una interfaz de creación que permite a las subclases decidir qué objetos concretos instanciar, evitando acoplar al cliente con clases concretas.  
 # Aplicabilidad (este módulo):
@@ -80,7 +76,6 @@ export class MedicamentoFactory {{
       concentracion: dto.concentracion,
       fechaCaducidad: new Date(dto.fechaCaducidad),
     }};
-
     switch (dto.tipo) {{
       
 ...
@@ -90,7 +85,7 @@ Flujo:* `Request → DTO validado → MedicamentoFactory.create(dto, id) → (Cr
 
 ---
 
-### 3.2 DTO — CreateMedicamentoDto (contrato/validación) 
+###  DTO — CreateMedicamentoDto (contrato/validación) 
 ¿Qué es? Objeto de transferencia que valida y modela la entrada.  
 ¿Por que?: separamos transporte de dominio y validamos campos comunes y específicos de cada tipo.  
 se encuentra en: `backend/src/catalogo/dto/createMedicamento.ts`  
@@ -160,8 +155,6 @@ Dónde se encuentra: `backend/src/catalogo/domain/enums/subpastilla.ts`
 
 ---
 
-##  Patrones preparados en esqueleto (por completar)
-
 ###  Composite (estructural) 
 ¿Qué es? Permite componer objetos en árboles y tratarlos de forma uniforme (hojas y compuestos).  
 Aplicabilidad (módulo): categorías ↔ productos; navegar jerarquías de catálogo.  
@@ -183,7 +176,6 @@ Aplicabilidad (módulo): recorrer listas/árboles de productos en diferentes ór
 Se encuentran en:  
 - `backend/src/catalogo/domain/iterator/MedicamentoIterator.ts`
 - `backend/src/catalogo/domain/iterator/IteradorInicio.ts`
-- `backend/src/catalogo/domain/iterator/IteradorMitad.ts`
 - `backend/src/catalogo/domain/iterator/IteradorFinal.ts`
 Plan mínimo:
 ```ts
@@ -215,6 +207,7 @@ create(dto: CreateMedicamentoDto) {
 }
 ```
 
+
 ---
 
 ##  Cómo correr el proyecto
@@ -228,8 +221,29 @@ Abre la URL que muestra Vite (p. ej. `http://localhost:5173`).
 
 ---
 
-##  Referencias o extras
-QUITAR SI NO SE VA A COLOCAR MAS NADA 
 
+##  Guía rápida de comandos
+Instalaciones de dependencias
+```bash
+npm install
+```
 
+Scripts del proyecto
+```bash
+npm run build           # Compilar TypeScript
+npm run start           # Ejecutar en producción
+npm run dev             # Ejecutar en modo desarrollo
 
+npm run prisma:generate # Generar cliente Prisma
+npm run prisma:push     # Sincronizar esquema con BD
+npm run prisma:studio   # Abrir Prisma Studio
+npm run seed            # Ejecutar script de seed
+```
+
+Comandos Prisma (usando npx)
+```bash
+npx prisma generate     # Generar cliente Prisma
+npx prisma db push      # Sincronizar esquema con BD
+npx prisma studio       # Abrir interfaz visual
+npx prisma db seed      # Ejecutar seed
+```
