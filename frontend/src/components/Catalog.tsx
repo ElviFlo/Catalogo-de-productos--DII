@@ -302,13 +302,12 @@ export default function Catalog() {
             </div>
 
             <div className="px-4 pt-6">
-              <div className="mx-auto h-28 w-full max-w-[260px] flex items-center justify-center bg-gray-100 rounded">
                 <img
-                  src={p.image}
-                  alt={p.name}
-                  className="h-full w-full object-cover rounded"
-                />
-              </div>
+                src={p.image}
+                alt={p.name}
+                className="mx-auto h-28 w-full max-w-[260px] object-contain"
+                loading="lazy"
+              />
             </div>
 
             <div className="px-4 pb-4 pt-3">
