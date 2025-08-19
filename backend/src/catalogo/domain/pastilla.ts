@@ -1,5 +1,5 @@
 import { Medicamento } from './medicamento';
-import { SubcategoriaPastilla } from '../domain/enums/subpastilla';
+import { SubcategoriaPastilla } from '@prisma/client';
 
 // 'Pastilla' extiende (hereda) de 'Medicamento', por lo que tiene todas sus propiedades.
 export class Pastilla extends Medicamento {

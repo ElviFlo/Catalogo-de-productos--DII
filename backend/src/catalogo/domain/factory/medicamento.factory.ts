@@ -3,6 +3,7 @@ import { CreateMedicamentoDto } from "../../dto/createMedicamento";
 import { Crema } from "../crema";
 import { Gel } from "../gel";
 import { Pastilla } from "../pastilla";
+import { TipoMedicamento } from "@prisma/client";
 
 // Importa la excepción específica de NestJS para un manejo de errores más limpio.
 import { BadRequestException } from "@nestjs/common";
@@ -15,12 +16,12 @@ export class MedicamentoFactory {
       nombre: dto.nombre,
       descripcion: dto.descripcion,
       farmaceutica: dto.farmaceutica,
-      concentracion: dto.concentracion,
+      concentracion: dto.concentracion || '',
       fechaCaducidad: new Date(dto.fechaCaducidad),
     };
 
     switch (dto.tipo) {
-      case "CREMA":
+      case TipoMedicamento.CREMA:
         if (dto.volumen === undefined) {
           // Lanza una excepción que NestJS convertirá en un error HTTP 400.
           throw new BadRequestException(
@@ -30,7 +31,7 @@ export class MedicamentoFactory {
         // Construye y devuelve la instancia de Crema.
         return new Crema({ ...baseData, volumen: dto.volumen });
 
-      case "GEL":
+      case TipoMedicamento.GEL:
         if (dto.volumen === undefined) {
           // Lanza una excepción que NestJS convertirá en una respuesta HTTP 400.
           throw new BadRequestException(
@@ -40,7 +41,7 @@ export class MedicamentoFactory {
         // Construye y devuelve la instancia de Gel.
         return new Gel({ ...baseData, volumen: dto.volumen });
 
-      case "PASTILLA":
+      case TipoMedicamento.PASTILLA:
         if (dto.cantidad === undefined || dto.subcategoria === undefined) {
           throw new BadRequestException(
             'Para el tipo PASTILLA, las propiedades "cantidad" y "subcategoria" son obligatorias.'

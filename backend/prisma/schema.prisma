@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Medicamento {
+  id             String                @id @default(cuid())
+  nombre         String
+  descripcion    String
+  farmaceutica   String
+  concentracion  String?
+  fechaCaducidad DateTime
+  tipo           TipoMedicamento
+  volumen        Int?
+  cantidad       Int?
+  subcategoria   SubcategoriaPastilla?
+  createdAt      DateTime              @default(now())
+}
+
+enum TipoMedicamento {
+  CREMA
+  GEL
+  PASTILLA
+}
+
+enum SubcategoriaPastilla {
+  ANALGESICO
+  ANTIBIOTICO
+  ANTIALERGICO
+  ANTIINFLAMATORIO
+}

@@ -40,3 +40,7 @@ yarn-error.log*
 .cache/
 .temp/
 .tmp/
+
+/generated/prisma
+
+/generated/prisma

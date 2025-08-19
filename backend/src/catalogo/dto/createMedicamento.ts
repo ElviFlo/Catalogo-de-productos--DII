@@ -1,13 +1,11 @@
-import { IsString, IsNotEmpty, IsDateString, IsEnum, IsNumber, IsOptional, IsPositive} from 'class-validator';
-import { SubcategoriaPastilla } from '../domain/enums/subpastilla';
+import { IsString, IsNotEmpty, IsOptional, IsEnum, IsInt, IsDateString, Min } from 'class-validator';
+import { TipoMedicamento, SubcategoriaPastilla } from '@prisma/client';
 
-// Este archivo ahora se convierte en el ÚNICO 'formulario de entrada' para crear cualquier medicamento.
-// Usamos propiedades opcionales (?) para manejar los diferentes tipos.
 export class CreateMedicamentoDto {
   @IsString()
   @IsNotEmpty()
   nombre!: string;
-  
+
   @IsString()
   @IsNotEmpty()
   descripcion!: string;
@@ -17,28 +15,27 @@ export class CreateMedicamentoDto {
   farmaceutica!: string;
 
   @IsString()
-  @IsNotEmpty()
-  concentracion!: string;
+  @IsOptional()
+  concentracion?: string;
 
   @IsDateString()
+  @IsNotEmpty()
   fechaCaducidad!: string;
 
-  @IsEnum(['CREMA', 'GEL', 'PASTILLA'])
-  tipo!: 'CREMA' | 'GEL' | 'PASTILLA';
-  
-  // Propiedades opcionales específicas de cada tipo
-  
-  @IsOptional()
-  @IsNumber()
-  @IsPositive()
-  volumen?: number; // Para Crema y Gel
+  @IsEnum(TipoMedicamento)
+  tipo!: TipoMedicamento;
 
+  @IsInt()
   @IsOptional()
-  @IsNumber()
-  @IsPositive()
-  cantidad?: number; // Para Pastilla
+  @Min(1)
+  volumen?: number; // solo para Crema/Gel
 
+  @IsInt()
   @IsOptional()
+  @Min(1)
+  cantidad?: number; // solo para Pastilla
+
   @IsEnum(SubcategoriaPastilla)
-  subcategoria?: SubcategoriaPastilla; // Para Pastilla
+  @IsOptional()
+  subcategoria?: SubcategoriaPastilla; // solo para Pastilla
 }
