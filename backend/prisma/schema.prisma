@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://neondb_owner:npg_LIogBi74axnk@ep-restless-night-ac56rgq8-pooler.sa-east-1.aws.neon.tech:5432/neondb?sslmode=require&channel_binding=require"
+  url      = env("DATABASE_URL")
 }
 
 model Medicamento {
@@ -19,6 +19,7 @@ model Medicamento {
   cantidad       Int?
   subcategoria   SubcategoriaPastilla?
   createdAt      DateTime              @default(now())
+  precio         Int?                  @default(5000)
 }
 
 enum TipoMedicamento {

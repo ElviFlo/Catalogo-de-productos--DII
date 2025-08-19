@@ -15,6 +15,7 @@ async function main() {
       fechaCaducidad: new Date('2025-12-31'),
       tipo: TipoMedicamento.PASTILLA,
       cantidad: 20,
+      precio: 4000,
       subcategoria: SubcategoriaPastilla.ANALGESICO
     },
     {
@@ -25,6 +26,7 @@ async function main() {
       fechaCaducidad: new Date('2025-10-31'),
       tipo: TipoMedicamento.PASTILLA,
       cantidad: 30,
+      precio: 6000,
       subcategoria: SubcategoriaPastilla.ANTIINFLAMATORIO
     },
     {
@@ -35,6 +37,7 @@ async function main() {
       fechaCaducidad: new Date('2026-03-15'),
       tipo: TipoMedicamento.PASTILLA,
       cantidad: 15,
+      precio: 8000,
       subcategoria: SubcategoriaPastilla.ANTIALERGICO
     },
     {
@@ -45,6 +48,7 @@ async function main() {
       fechaCaducidad: new Date('2025-08-20'),
       tipo: TipoMedicamento.PASTILLA,
       cantidad: 21,
+      precio: 12000,
       subcategoria: SubcategoriaPastilla.ANTIBIOTICO
     },
     {
@@ -54,7 +58,8 @@ async function main() {
       concentracion: '1%',
       fechaCaducidad: new Date('2025-11-30'),
       tipo: TipoMedicamento.GEL,
-      volumen: 50
+      volumen: 50,
+      precio: 15000
     },
     {
       nombre: 'Clotrimazol Crema',
@@ -63,7 +68,8 @@ async function main() {
       concentracion: '1%',
       fechaCaducidad: new Date('2026-01-15'),
       tipo: TipoMedicamento.CREMA,
-      volumen: 30
+      volumen: 30,
+      precio: 18000
     }
   ]
 

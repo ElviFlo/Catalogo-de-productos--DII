@@ -134,14 +134,17 @@ export default function Catalog() {
   const [query, setQuery] = useState("");
   const [type, setType] = useState<"Todos" | ProductType>("Todos");
   const [brand, setBrand] = useState<string>("Todas");
-  const [maxPrice, setMaxPrice] = useState<number>(MAX_PRICE); // inicia en el máximo
+  const [maxPrice, setMaxPrice] = useState<number>(MAX_PRICE);
   const [sortBy, setSortBy] = useState<
     "relevance" | "priceAsc" | "priceDesc" | "name"
   >("relevance");
   const [page, setPage] = useState(1);
   const pageSize = 9;
 
-  const brands = useMemo(() => unique(PRODUCTS.map((p) => p.brand)), []);
+  // Obtener marcas únicas
+  const brands = useMemo(() => {
+    return unique(PRODUCTS.map((p) => p.brand));
+  }, []);
 
   // Reset
   const resetFilters = () => {
@@ -299,12 +302,13 @@ export default function Catalog() {
             </div>
 
             <div className="px-4 pt-6">
-              <img
-                src={p.image}
-                alt={p.name}
-                className="mx-auto h-28 w-full max-w-[260px] object-contain"
-                loading="lazy"
-              />
+              <div className="mx-auto h-28 w-full max-w-[260px] flex items-center justify-center bg-gray-100 rounded">
+                <img
+                  src={p.image}
+                  alt={p.name}
+                  className="h-full w-full object-cover rounded"
+                />
+              </div>
             </div>
 
             <div className="px-4 pb-4 pt-3">
@@ -312,6 +316,7 @@ export default function Catalog() {
                 {p.name}
               </h3>
               <div className="mt-1 text-xs text-gray-500">{p.brand}</div>
+              <div className="mt-1 text-xs text-gray-400">{p.type}</div>
 
               <div className="mt-3 flex items-center justify-between">
                 <a
