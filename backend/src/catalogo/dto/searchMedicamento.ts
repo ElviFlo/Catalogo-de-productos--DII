@@ -1,18 +1,18 @@
 import { IsOptional, IsString, IsEnum } from 'class-validator';
-import { TipoMedicamento, SubcategoriaPastilla } from '@prisma/client';
+import { TipoMedicamentoEnum, SubcategoriaPastillaEnum } from './createMedicamento';
 
 export class SearchMedicamentoDto {
   @IsString()
   @IsOptional()
   nombre?: string;
 
-  @IsEnum(TipoMedicamento)
+  @IsEnum(TipoMedicamentoEnum)
   @IsOptional()
-  tipo?: TipoMedicamento;
+  tipo?: TipoMedicamentoEnum;
 
-  @IsEnum(SubcategoriaPastilla)
+  @IsEnum(SubcategoriaPastillaEnum)
   @IsOptional()
-  subcategoria?: SubcategoriaPastilla;
+  subcategoria?: SubcategoriaPastillaEnum;
 
   @IsString()
   @IsOptional()

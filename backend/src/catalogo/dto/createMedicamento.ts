@@ -1,5 +1,15 @@
 import { IsString, IsNotEmpty, IsOptional, IsEnum, IsInt, IsDateString, Min } from 'class-validator';
-import { TipoMedicamento, SubcategoriaPastilla } from '@prisma/client';
+
+export enum TipoMedicamentoEnum {
+  PASTILLA = 'PASTILLA',
+  CREMA = 'CREMA',
+  JARABE = 'JARABE',
+}
+
+export enum SubcategoriaPastillaEnum {
+  GENERICA = 'GENERICA',
+  MARCA = 'MARCA',
+}
 
 export class CreateMedicamentoDto {
   @IsString()
@@ -22,8 +32,8 @@ export class CreateMedicamentoDto {
   @IsNotEmpty()
   fechaCaducidad!: string;
 
-  @IsEnum(TipoMedicamento)
-  tipo!: TipoMedicamento;
+  @IsEnum(TipoMedicamentoEnum)
+  tipo!: TipoMedicamentoEnum;
 
   @IsInt()
   @IsOptional()
@@ -35,7 +45,7 @@ export class CreateMedicamentoDto {
   @Min(1)
   cantidad?: number; // solo para Pastilla
 
-  @IsEnum(SubcategoriaPastilla)
+  @IsEnum(SubcategoriaPastillaEnum)
   @IsOptional()
-  subcategoria?: SubcategoriaPastilla; // solo para Pastilla
+  subcategoria?: SubcategoriaPastillaEnum; // solo para Pastilla
 }
