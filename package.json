@@ -12,7 +12,11 @@
     "prisma:push": "npm --prefix backend run prisma:push",
     "frontend:dev": "npm --prefix frontend run dev",
     "frontend:build": "npm --prefix frontend run build",
-    "frontend:preview": "npm --prefix frontend run preview"
+    "frontend:preview": "npm --prefix frontend run preview",
+     "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "dev_all": "npm-run-all --parallel dev:backend dev:frontend"
+
   },
   "dependencies": {
     "@nestjs/common": "^11.1.6",
@@ -25,6 +29,7 @@
   },
   "devDependencies": {
     "@prisma/client": "^6.14.0",
+    "npm-run-all": "^4.1.5",
     "prisma": "^6.14.0"
   }
 }
