@@ -253,7 +253,7 @@ Frontend (Vite):
 ```bash
 cd frontend
 npm install
-npm run dev
+npm run dev_all
 ```
 Abre la URL que muestra Vite (p. ej. `http://localhost:5173`).
 
