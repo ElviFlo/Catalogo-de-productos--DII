@@ -17,7 +17,7 @@ function Badge({ children }: { children: React.ReactNode }) {
 }
 
 function Card({ m }: { m: Medicamento }) {
-  const img = `https://placehold.co/640x360/ffffff/1e293b?text=${encodeURIComponent(m.nombre)}`;
+  const img = `../assets/products/${m.nombre}.png`;
   const precio = priceOf(m);
   return (
     <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-3 flex flex-col">
