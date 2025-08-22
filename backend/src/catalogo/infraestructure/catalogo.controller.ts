@@ -1,30 +1,33 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  Query,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
+import { ArbolCatalogoService } from '../app/arbol-catalogo.service';
 import { MedicamentoService } from '../app/medicamento.service';
 import { CreateMedicamentoDto } from '../dto/createMedicamento';
 import { UpdateMedicamentoDto } from '../dto/updateMedicamento';
 import { SearchMedicamentoDto } from '../dto/searchMedicamento';
 
-@Controller('medicamentos')
+// /catalogo/arbol (árbol Composite)
+@Controller('catalogo')
 export class CatalogoController {
+  constructor(private readonly arbolSvc: ArbolCatalogoService) {}
+
+  @Get('arbol')
+  getArbol() {
+    return this.arbolSvc.arbolPorTipo();
+  }
+}
+
+// /medicamentos (CRUD + búsqueda)
+@Controller('medicamentos')
+export class MedicamentosController {
   constructor(private readonly medicamentoService: MedicamentoService) {}
 
   @Post()
-  create(@Body() createMedicamentoDto: CreateMedicamentoDto) {
-    return this.medicamentoService.create(createMedicamentoDto);
+  create(@Body() dto: CreateMedicamentoDto) {
+    return this.medicamentoService.create(dto);
   }
 
   @Get()
   findAll(@Query() searchDto: SearchMedicamentoDto) {
-    // Si hay parámetros de búsqueda, usar search, sino findAll
     if (Object.keys(searchDto).length > 0) {
       return this.medicamentoService.search(searchDto);
     }
@@ -47,11 +50,8 @@ export class CatalogoController {
   }
 
   @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body() updateMedicamentoDto: UpdateMedicamentoDto,
-  ) {
-    return this.medicamentoService.update(id, updateMedicamentoDto);
+  update(@Param('id') id: string, @Body() dto: UpdateMedicamentoDto) {
+    return this.medicamentoService.update(id, dto);
   }
 
   @Delete(':id')

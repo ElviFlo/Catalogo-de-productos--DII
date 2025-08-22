@@ -1,23 +1,17 @@
-import { Module } from '@nestjs/common';
+﻿import { Module } from '@nestjs/common';
+import { PrismaModule } from '../prisma/prisma.module';
+
 import { CatalogoController } from './infraestructure/catalogo.controller';
+import { MedicamentosController } from './infraestructure/medicamentos.controller';
+
+import { ArbolCatalogoService } from './app/arbol-catalogo.service';
 import { MedicamentoService } from './app/medicamento.service';
-import { CatalogoService } from './app/catalogo.service';
-import { BusquedaService } from './app/busqueda.service';
 import { MedicamentoRepository } from './infraestructure/medicamento.repository';
 
 @Module({
-  controllers: [CatalogoController],
-  providers: [
-    MedicamentoService,
-    CatalogoService,
-    BusquedaService,
-    MedicamentoRepository,
-  ],
-  exports: [
-    MedicamentoService,
-    CatalogoService,
-    BusquedaService,
-    MedicamentoRepository,
-  ],
+  imports: [PrismaModule],
+  controllers: [CatalogoController, MedicamentosController],
+  providers: [ArbolCatalogoService, MedicamentoService, MedicamentoRepository],
+  exports: [ArbolCatalogoService, MedicamentoService, MedicamentoRepository],
 })
 export class CatalogoModule {}
